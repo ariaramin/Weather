@@ -1,8 +1,8 @@
 <template>
-  <div id="app" :class="typeof weather.main != 'undefined' && Math.round(weather.main.temp) <= 15 ? 'cold' : ''">
+  <div id="app" :class="typeof weather.main != 'undefined' && Math.round(weather.main.temp) <= 15 ? new Date().getHours() >= 20 ? 'dark-cold': 'cold' : new Date().getHours() >= 20 ? 'dark-warm' : ''">
     <main class="content">
       <div class="search-box">
-        <input type="search" class="search" placeholder="Search Location..." v-model="location" @keypress.enter="FindWeather">
+        <input type="search" class="search" placeholder="Search Location..." ref="search" v-model="location" @keypress.enter="FindWeather">
       </div>
       <div class="info" v-if="typeof weather.main != 'undefined'">
         <div class="location-date">
@@ -55,6 +55,9 @@ export default {
 
       return `${day}, ${month} ${date.getDate()}, ${year}`
     }
+  },
+  mounted() {
+    this.$refs.search.focus()
   }
 }
 </script>
@@ -80,6 +83,16 @@ export default {
 #app.cold{
   background: url('assets/cold-bg.jpg') no-repeat bottom;
   background-size: cover;
+}
+
+#app.dark-cold{
+  background: url('assets/dark-cold-bg.jpg') no-repeat bottom;
+  background-size: cover
+}
+
+#app.dark-warm{
+  background: url('assets/dark-warm-bg.jpg') no-repeat bottom;
+  background-size: cover
 }
 
 .content{
