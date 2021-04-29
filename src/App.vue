@@ -1,5 +1,6 @@
 <template>
   <div id="app" :class="typeof weather.main != 'undefined' && Math.round(weather.main.temp) <= 15 ? new Date().getHours() >= 20 ? 'dark-cold': 'cold' : new Date().getHours() >= 20 ? 'dark-warm' : ''">
+    <div class="weather-status" :class="typeof weather.weather != 'undefined' && weather.weather[0].main.toLowerCase() === 'rain' ? 'rain' : typeof weather.weather != 'undefined' && weather.weather[0].main.toLowerCase() === 'snow' ? 'snow' : ''"></div>
     <main class="content">
       <div class="search-box">
         <input type="search" class="search" placeholder="Search Location..." ref="search" v-model="location" @keypress.enter="FindWeather">
@@ -73,7 +74,7 @@ export default {
 
 #app {
   text-align: center;
-  background: url('assets/warm-bg.jpeg') no-repeat bottom;
+  background: url('assets/warm-bg.jpeg') no-repeat bottom fixed;
   background-size: cover;
   height: 100vh;
   color: #FFFFFF;
@@ -81,23 +82,49 @@ export default {
 }
 
 #app.cold{
-  background: url('assets/cold-bg.jpg') no-repeat bottom;
+  background: url('assets/cold-bg.jpg') no-repeat bottom fixed;
   background-size: cover;
 }
 
 #app.dark-cold{
-  background: url('assets/dark-cold-bg.jpg') no-repeat bottom;
+  background: url('assets/dark-cold-bg.jpg') no-repeat bottom fixed;
   background-size: cover
 }
 
 #app.dark-warm{
-  background: url('assets/dark-warm-bg.jpg') no-repeat bottom;
+  background: url('assets/dark-warm-bg.jpg') no-repeat bottom fixed;
   background-size: cover
 }
 
 .content{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+  z-index: 111;
+}
+
+.weather-status{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.rain{
+  filter: blur(1px);
+  background: url("./assets/rain.gif") no-repeat center fixed;
+  background-size: cover;
+}
+
+.snow{
+  filter: blur(1px);
+  background: url("./assets/snow2.gif") no-repeat center fixed;
+  background-size: cover;
 }
 
 .search-box{
