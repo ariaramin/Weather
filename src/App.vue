@@ -1,6 +1,5 @@
 <template>
   <div id="app" :class="typeof weather.main != 'undefined' && Math.round(weather.main.temp) <= 15 ? new Date().getHours() >= 20 ? 'dark-cold': 'cold' : new Date().getHours() >= 20 ? 'dark-warm' : ''">
-    <div class="weather-status" :class="typeof weather.weather != 'undefined' && weather.weather[0].main.toLowerCase() === 'rain' ? 'rain' : typeof weather.weather != 'undefined' && weather.weather[0].main.toLowerCase() === 'snow' ? 'snow' : ''"></div>
     <main class="content">
       <div class="search-box">
         <input type="search" class="search" placeholder="Search Location..." ref="search" v-model="location" @keypress.enter="FindWeather">
@@ -113,18 +112,6 @@ export default {
   width: 100%;
   height: 100vh;
   z-index: 0;
-}
-
-.rain{
-  filter: blur(1px);
-  background: url("./assets/rain.gif") no-repeat center fixed;
-  background-size: cover;
-}
-
-.snow{
-  filter: blur(1px);
-  background: url("./assets/snow2.gif") no-repeat center fixed;
-  background-size: cover;
 }
 
 .search-box{
