@@ -1,5 +1,7 @@
 # weather
 
+## Note: For a better look, you should activate the responsive design mode of your browser and set it to mobile mode.
+
 ## Project setup
 ```
 npm install
