@@ -15,8 +15,8 @@
         </div>
 
         <div class="weather">
+          <img :src="`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`" :alt="weather.weather[0].main">
           <p>{{ weather.weather[0].main }}</p>
-          <h4>{{ Math.round(weather.main.temp_min) }}/ {{ Math.round(weather.main.temp_max) }}°C</h4>
         </div>
       </div>
       <div class="warning" v-else>
@@ -64,11 +64,11 @@ export default {
 
 <style>
 
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  transition: 0.4s;
+  transition: 0.5s ease;
 }
 
 #app {
@@ -136,7 +136,7 @@ export default {
 
 .info, .warning{
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   width: max-content;
