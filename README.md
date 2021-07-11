@@ -4,11 +4,15 @@
 
 ## Project view
 
-<img src="warm.jpg" alt="warm" width="50%">
-<img src="cold.jpg" alt="cold" width="50%">
-<img src="warm-night.jpg" alt="warm-night" width="50%">
-<img src="cold-night.jpg" alt="cold-night" width="50%">
+<div>
+<img src="warm.jpg" alt="warm">
+<img src="cold.jpg" align="right" alt="cold">
+</div>
 
+<div>
+<img src="warm-night.jpg" alt="warm-night">
+<img src="cold-night.jpg" align="right" alt="cold-night">
+</div>
 
 ## Project setup
 ```
